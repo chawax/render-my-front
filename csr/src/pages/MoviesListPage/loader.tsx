@@ -1,8 +1,8 @@
 import { loadMovies } from "../../services";
-import { Movie } from "../../types";
+import { MovieResume } from "../../types";
 
 export interface MoviesLoaderdata {
-  movies: Array<Movie>;
+  movies: Array<MovieResume>;
 }
 
 export default async function moviesLoader(): Promise<MoviesLoaderdata> {
