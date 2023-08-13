@@ -1,28 +1,29 @@
+import { MovieCard } from "@/components/MovieCard";
 import { loadMovies } from "@/services";
-import { Movie } from "@/types";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { MovieResume } from "@/types";
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 
-export default function HomePage({
+export default function MoviesPage({
   movies,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getStaticProps>) {
   return movies.length > 0 ? (
-    <ul>
+    <section>
       {movies.map((movie) => {
         return (
-          <li key={movie.id}>
-            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-          </li>
+          <Link href={`/movies/${movie.id}`} key={movie.id}>
+            <MovieCard movie={movie} />
+          </Link>
         );
       })}
-    </ul>
+    </section>
   ) : (
     <p>Aucun film</p>
   );
 }
 
 export const getStaticProps: GetStaticProps<{
-  movies: Array<Movie>;
+  movies: Array<MovieResume>;
 }> = async () => {
   const movies = await loadMovies();
   return { props: { movies } };
