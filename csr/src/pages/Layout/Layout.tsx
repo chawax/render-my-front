@@ -3,14 +3,12 @@ import { Link, Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <>
-      <header>
-        <nav>
-          <Link to="/">
-            <h1>My Movies</h1>
-          </Link>
-        </nav>
+      <header className="bg-black p-4 sticky top-0">
+        <Link to="/">
+          <h1 className="text-3xl text-white font-bold">My Movies</h1>
+        </Link>
       </header>
-      <main>
+      <main className="p-4">
         <Outlet />
       </main>
     </>
