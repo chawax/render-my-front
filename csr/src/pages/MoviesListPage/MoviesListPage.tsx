@@ -5,10 +5,14 @@ import { MoviesLoaderdata } from "./loader";
 export default function MoviesListPage() {
   const { movies } = useLoaderData() as MoviesLoaderdata;
   return movies.length > 0 ? (
-    <section>
+    <section className="flex flex-row flex-wrap justify-between">
       {movies.map((movie) => {
         return (
-          <Link to={`/movies/${movie.id}`} key={movie.id}>
+          <Link
+            to={`/movies/${movie.id}`}
+            key={movie.id}
+            className="basis-80 w-20"
+          >
             <MovieCard movie={movie} />
           </Link>
         );
