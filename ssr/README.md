@@ -6,6 +6,7 @@ Stack technique :
 
 - Next.js
 - Typescript
+- Tailwind
 
 Installation :
 
