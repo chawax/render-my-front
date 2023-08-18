@@ -1,0 +1,21 @@
+---
+import MovieCard from "../components/MovieCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { loadMovies } from "../services";
+
+const movies = await loadMovies();
+---
+
+<Layout title="My Movies">
+  <section class="flex flex-row flex-wrap justify-between">
+    {
+      movies.map((movie) => {
+        return (
+          <a href={`/movies/${movie.id}`} class="w-full sm:basis-1/4 sm:w-20">
+            <MovieCard movie={movie} />
+          </a>
+        );
+      })
+    }
+  </section>
+</Layout>
