@@ -8,6 +8,7 @@ Stack technique :
 - React
 - Typescript
 - React Router
+- Tailwind
 
 Installation :
 
