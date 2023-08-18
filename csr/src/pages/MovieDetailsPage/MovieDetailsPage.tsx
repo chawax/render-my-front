@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { MovieLoaderdata } from "./loader";
 import { format, parse } from "date-fns";
+import { ActorCard } from "../../components/ActorCard";
 
 const popularityFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
@@ -16,57 +17,50 @@ export default function MovieDetailsPage() {
     );
     const formattedPopularity = popularityFormatter.format(movie.popularity);
     return (
-      <article>
-        <div>
-          <h2 className="text-3xl font-bold mb-4">{movie.title}</h2>
-          <p className="text-md mb-4 italic">{movie.tagline}</p>
-        </div>
-        <div className="flex flex-row gap-4">
-          <div className="flex-initial basis-1/4">
-            <img
-              src={imgUrl}
-              alt={movie.title}
-              width={400}
-              className="rounded"
-            />
-          </div>
-          <div className="basis-3/4">
-            <p className="text-md mb-4">{movie.overview}</p>
-            <p className="text-sm mb-4">Sortie le {formattedReleaseDate}</p>
-            <p className="text-sm mb-4">Popularité : {formattedPopularity}</p>
+      <article className="flex flex-col gap-4">
+        <h2 className="text-3xl font-bold">{movie.title}</h2>
+        <p className="text-md italic">{movie.tagline}</p>
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <img
+            src={imgUrl}
+            alt={movie.title}
+            width={500}
+            className="rounded w-fit sm:basis-1/4 sm:w-[100px]"
+          />
+
+          <div className="flex flex-col gap-4 sm:basis-3/4 sm:ml-4">
+            <p className="text-md">{movie.overview}</p>
             {movie.genres ? (
-              <section className="mb-4">
-                <h3 className="text-xl font-bold">Genres</h3>
-                <ul className="list-none mt-1">
-                  {movie.genres.map((genre) => (
-                    <span
-                      key={genre}
-                      className="text-sm text-white text-center bg-stone-500 py-2 px-4 rounded-xl mr-1"
-                    >
-                      {genre}
-                    </span>
-                  ))}
-                </ul>
-              </section>
+              <ul className="list-none">
+                {movie.genres.map((genre) => (
+                  <span
+                    key={genre}
+                    className="text-sm text-white text-center bg-stone-500 py-2 px-4 rounded-xl mr-1 mb-1 inline-block"
+                  >
+                    {genre}
+                  </span>
+                ))}
+              </ul>
             ) : null}
+            <p className="text-sm">
+              Sortie le{" "}
+              <span className="font-bold">{formattedReleaseDate}</span>
+            </p>
+            <p className="text-sm">
+              Popularité :{" "}
+              <span className="font-bold">{formattedPopularity}</span>
+            </p>
             {movie.actors ? (
-              <section className="mt-4">
+              <section>
                 <h3 className="text-xl font-bold">Casting</h3>
-                <div className="flex flex-row">
+                <div className="flex flex-row flex-wrap sm:flex-nowrap sm:w-200">
                   {movie.actors.map((actor) => {
                     return (
-                      <div key={actor.id} className="p-1 w-200">
-                        {actor.profilePath ? (
-                          <img
-                            src={`https://image.tmdb.org/t/p/w200${actor.profilePath}`}
-                            alt={actor.name}
-                            title={actor.name}
-                            width={100}
-                            className="rounded"
-                          />
-                        ) : null}
-                        <p className="text-xs text-center mt-1">{actor.name}</p>
-                      </div>
+                      <ActorCard
+                        key={actor.id}
+                        className="p-1 basis-1/2"
+                        actor={actor}
+                      />
                     );
                   })}
                 </div>
