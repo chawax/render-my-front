@@ -1,0 +1,80 @@
+---
+import { format, parse } from "date-fns";
+import ActorCard from "../../components/ActorCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { loadMovie, loadMovies } from "../../services";
+
+const popularityFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "decimal",
+});
+
+export async function getStaticPaths() {
+  const movies = await loadMovies();
+  return movies.map((movie) => ({
+    params: {
+      id: movie.id,
+      //  movie: movie,
+    },
+  }));
+}
+
+const { id } = Astro.params;
+const movie = await loadMovie(id);
+
+const imgUrl = `https://image.tmdb.org/t/p/w500${movie.posterPath}`;
+const formattedReleaseDate = format(
+  parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
+  "dd/MM/yyyy"
+);
+const formattedPopularity = popularityFormatter.format(movie.popularity);
+---
+
+<Layout title="My Movies">
+  <article class="flex flex-col gap-4">
+    <h2 class="text-3xl font-bold">{movie.title}</h2>
+    <p class="text-md italic">{movie.tagline}</p>
+    <div class="flex flex-col gap-4 sm:flex-row">
+      <img
+        src={imgUrl}
+        alt={movie.title}
+        width={400}
+        height={600}
+        class="rounded w-fit sm:basis-1/4 sm:w-[100px]"
+      />
+
+      <div class="flex flex-col gap-4 sm:basis-3/4 sm:ml-4">
+        <p class="text-md">{movie.overview}</p>
+        {
+          movie.genres ? (
+            <ul class="list-none">
+              {movie.genres.map((genre) => (
+                <span class="text-sm text-white text-center bg-stone-500 py-2 px-4 rounded-xl mr-1 mb-1 inline-block">
+                  {genre}
+                </span>
+              ))}
+            </ul>
+          ) : null
+        }
+        <p class="text-sm">
+          Sortie le <span class="font-bold">{formattedReleaseDate}</span>
+        </p>
+        <p class="text-sm">
+          Popularité :{" "}
+          <span class="font-bold">{formattedPopularity}</span>
+        </p>
+        {
+          movie.actors ? (
+            <section>
+              <h3 class="text-xl font-bold">Casting</h3>
+              <div class="flex flex-row flex-wrap sm:flex-nowrap sm:w-200">
+                {movie.actors.map((actor) => {
+                  return <ActorCard className="p-1 basis-1/2" actor={actor} />;
+                })}
+              </div>
+            </section>
+          ) : null
+        }
+      </div>
+    </div>
+  </article>
+</Layout>

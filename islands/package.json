@@ -1,0 +1,21 @@
+{
+  "name": "islands",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.10.11",
+    "date-fns": "^2.30.0",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/ts-plugin": "^1.1.1"
+  }
+}
