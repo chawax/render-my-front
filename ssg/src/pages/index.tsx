@@ -8,10 +8,14 @@ export default function MoviesPage({
   movies,
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
   return movies.length > 0 ? (
-    <section>
+    <section className="flex flex-row flex-wrap justify-between">
       {movies.map((movie) => {
         return (
-          <Link href={`/movies/${movie.id}`} key={movie.id}>
+          <Link
+            href={`/movies/${movie.id}`}
+            key={movie.id}
+            className="w-full sm:basis-1/4 sm:w-20"
+          >
             <MovieCard movie={movie} />
           </Link>
         );
