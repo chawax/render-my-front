@@ -10,7 +10,7 @@ const popularityFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 const MovieCard = ({ movie }: MovieCardProps) => {
-  const imgUrl = `https://image.tmdb.org/t/p/w200${movie.posterPath}`;
+  const imgUrl = `https://image.tmdb.org/t/p/w300${movie.posterPath}`;
   const formattedReleaseDate = format(
     parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
     "dd/MM/yyyy"
@@ -23,9 +23,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       </h2>
       <img
         src={imgUrl}
+        className="rounded mx-auto hover:scale-105 w-[300px] sm:w-[200px]"
         alt={movie.title}
-        width={200}
-        className="rounded mx-auto hover:scale-105"
+        title={movie.title}
       />
       <p className="text-sm text-center mt-4">
         Sortie le {formattedReleaseDate}

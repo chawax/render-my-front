@@ -11,7 +11,7 @@ export default function MoviesListPage() {
           <Link
             to={`/movies/${movie.id}`}
             key={movie.id}
-            className="basis-80 w-20"
+            className="w-full sm:basis-1/4 sm:w-20"
           >
             <MovieCard movie={movie} />
           </Link>
