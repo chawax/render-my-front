@@ -6,6 +6,7 @@ Stack technique :
 
 - Astro
 - Typescript
+- Tailwind
 
 Installation :
 
