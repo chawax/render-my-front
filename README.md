@@ -1,7 +1,7 @@
 # Render My Front
 
 Ce repository contient plusieurs versions d'une même application avec différents types de rendu :
-- En mode Client Server Side Rendering (en utilisant Vite et React)
+- En mode Client Side Rendering (en utilisant Vite et React)
 - En mode Server Side Rendering (en utilisation Next.js)
 - En mode Static Site Generation (en utilisant Next.js)
 - En mode Incremental Static Regeneration (en utilisant Next.js)
