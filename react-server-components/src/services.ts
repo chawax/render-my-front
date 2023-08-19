@@ -2,7 +2,6 @@ import { MovieDetails, MovieResume } from "./types";
 
 const getHeaders = (): HeadersInit => {
   const key = process.env.API_KEY;
-  console.log(`key : ${key}`);
   if (!key) {
     throw new Error("No API key configured on server !");
   }
