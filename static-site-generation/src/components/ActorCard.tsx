@@ -1,5 +1,5 @@
+import { Actor } from "@/types";
 import Image from "next/image";
-import { Actor } from "../../types";
 
 type ActorCardProps = {
   actor: Actor;
