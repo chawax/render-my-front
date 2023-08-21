@@ -1,4 +1,4 @@
-import { ActorCard } from "@/components/ActorCard";
+import { ActorCard } from "@/components";
 import { loadMovie, loadMovies } from "@/services";
 import { format, parse } from "date-fns";
 import Image from "next/image";
