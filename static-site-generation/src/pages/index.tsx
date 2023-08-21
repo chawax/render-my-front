@@ -1,4 +1,4 @@
-import { MovieCard } from "@/components/MovieCard";
+import { MovieCard } from "@/components";
 import { loadMovies } from "@/services";
 import { MovieResume } from "@/types";
 import { GetStaticProps, InferGetServerSidePropsType } from "next";
