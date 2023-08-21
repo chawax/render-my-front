@@ -1,5 +1,5 @@
 import { format, parse } from "date-fns";
-import { MovieResume } from "../../types";
+import { MovieResume } from "../types";
 
 type MovieCardProps = {
   movie: MovieResume;

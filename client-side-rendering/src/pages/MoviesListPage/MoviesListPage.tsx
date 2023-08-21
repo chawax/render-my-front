@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { MovieCard } from "../../components/MovieCard";
+import { MovieCard } from "../../components";
 import { MoviesLoaderdata } from "./loader";
 
 export default function MoviesListPage() {
