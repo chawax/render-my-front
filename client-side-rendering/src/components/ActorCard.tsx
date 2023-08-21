@@ -1,4 +1,4 @@
-import { Actor } from "../../types";
+import { Actor } from "../types";
 
 type ActorCardProps = {
   actor: Actor;

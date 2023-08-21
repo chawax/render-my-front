@@ -1,7 +1,7 @@
-import { useLoaderData } from "react-router-dom";
-import { MovieLoaderdata } from "./loader";
 import { format, parse } from "date-fns";
-import { ActorCard } from "../../components/ActorCard";
+import { useLoaderData } from "react-router-dom";
+import { ActorCard } from "../../components";
+import { MovieLoaderdata } from "./loader";
 
 const popularityFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
