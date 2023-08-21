@@ -1,6 +1,6 @@
 import { format, parse } from "date-fns";
 import Image from "next/image";
-import { MovieResume } from "../../types";
+import { MovieResume } from "../types";
 
 type MovieCardProps = {
   movie: MovieResume;
