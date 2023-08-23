@@ -1,6 +1,6 @@
 import useFavorite from "@/hooks/useFavorite";
 
-type FavoriteProps = {
+type FavoriteButtonProps = {
   id: number;
 };
 
@@ -18,7 +18,7 @@ const Button = ({
   );
 };
 
-const Favorite = ({ id }: FavoriteProps) => {
+const FavoriteButton = ({ id }: FavoriteButtonProps) => {
   const { favorite, addFavorite, removeFavorite } = useFavorite(id);
   if (favorite) {
     return <Button onClick={removeFavorite}>Supprimer des favoris</Button>;
@@ -27,4 +27,4 @@ const Favorite = ({ id }: FavoriteProps) => {
   }
 };
 
-export default Favorite;
+export default FavoriteButton;
