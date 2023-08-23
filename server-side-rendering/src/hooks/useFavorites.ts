@@ -1,26 +1,35 @@
-import { addFavorite, isFavorite, removeFavorite } from "@/services";
+import { loadFavorites, saveFavorites } from "@/services";
 import { useEffect, useState } from "react";
 
-const useFavorites = (id: number) => {
-  const [favorite, setFavorite] = useState(false);
-  useEffect(() => {
-    setFavorite(isFavorite(id));
-  }, [id]);
+const useFavorites = () => {
+  const [favorites, setFavorites] = useState<number[]>([]);
 
-  const handleAddFavorite = () => {
-    setFavorite(!favorite);
-    addFavorite(id);
+  useEffect(() => {
+    const favorites = loadFavorites();
+    setFavorites(favorites);
+  }, []);
+
+  const isFavorite = (id: number) => {
+    return favorites.includes(id);
   };
 
-  const handleRemoveFavorite = () => {
-    setFavorite(!favorite);
-    removeFavorite(id);
+  const addFavorite = (id: number) => {
+    const newFavorites = [...favorites, id];
+    setFavorites(newFavorites);
+    saveFavorites(newFavorites);
+  };
+
+  const removeFavorite = (id: number) => {
+    const newFavorites = favorites.filter((element) => element !== id);
+    setFavorites(newFavorites);
+    saveFavorites(newFavorites);
   };
 
   return {
-    isFavorite: favorite,
-    addFavorite: handleAddFavorite,
-    removeFavorite: handleRemoveFavorite,
+    favorites,
+    isFavorite,
+    addFavorite,
+    removeFavorite,
   };
 };
 

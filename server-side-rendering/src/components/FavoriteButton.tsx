@@ -1,4 +1,4 @@
-import useFavorites from "@/hooks/useFavorites";
+import useFavorite from "@/hooks/useFavorite";
 
 type FavoriteProps = {
   id: number;
@@ -19,8 +19,8 @@ const Button = ({
 };
 
 const Favorite = ({ id }: FavoriteProps) => {
-  const { isFavorite, addFavorite, removeFavorite } = useFavorites(id);
-  if (isFavorite) {
+  const { favorite, addFavorite, removeFavorite } = useFavorite(id);
+  if (favorite) {
     return <Button onClick={removeFavorite}>Supprimer des favoris</Button>;
   } else {
     return <Button onClick={addFavorite}>Ajouter aux favoris</Button>;
