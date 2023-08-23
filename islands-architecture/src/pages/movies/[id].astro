@@ -3,6 +3,7 @@ import { format, parse } from "date-fns";
 import ActorCard from "../../components/ActorCard.astro";
 import Layout from "../../layouts/Layout.astro";
 import { loadMovie, loadMovies } from "../../services";
+import { FavoriteButton } from "../../components";
 
 const popularityFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
@@ -13,7 +14,6 @@ export async function getStaticPaths() {
   return movies.map((movie) => ({
     params: {
       id: movie.id,
-      //  movie: movie,
     },
   }));
 }
@@ -43,6 +43,7 @@ const formattedPopularity = popularityFormatter.format(movie.popularity);
       />
 
       <div class="flex flex-col gap-4 sm:basis-3/4 sm:ml-4">
+        <FavoriteButton id={movie.id} client:only />
         <p class="text-md">{movie.overview}</p>
         {
           movie.genres ? (
