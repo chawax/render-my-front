@@ -1,4 +1,4 @@
-import { ActorCard } from "@/components";
+import { ActorCard, FavoriteButton } from "@/components";
 import { loadMovie, loadMovies } from "@/services";
 import { format, parse } from "date-fns";
 import Image from "next/image";
@@ -38,6 +38,7 @@ export default async function MoviePage({
         />
 
         <div className="flex flex-col gap-4 sm:basis-3/4 sm:ml-4">
+          <FavoriteButton id={movie.id} />
           <p className="text-md">{movie.overview}</p>
           {movie.genres ? (
             <ul className="list-none">

@@ -1,4 +1,4 @@
-import { MovieDetails, MovieResume } from "./types";
+import { MovieDetails, MovieResume } from "@/types";
 
 const getHeaders = (): HeadersInit => {
   const key = process.env.API_KEY;
