@@ -1,13 +1,13 @@
-import useFavorite from "@/hooks/useFavorite";
+import { ComponentPropsWithoutRef } from "react";
+import useFavorite from "../hooks/useFavorite";
 
 type FavoriteButtonProps = {
   id: number;
 };
 
-const Button = ({
-  children,
-  ...otherProps
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+type ButtonProps = ComponentPropsWithoutRef<"button">;
+
+const Button = ({ children, ...otherProps }: ButtonProps) => {
   return (
     <button
       className="bg-stone-500 hover:bg-stone-600 hover:scale-105 text-white text-sm text-center rounded-xl w-max py-2 px-4"
