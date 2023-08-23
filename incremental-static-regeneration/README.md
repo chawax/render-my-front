@@ -1,13 +1,15 @@
-# Static Site Generation
+# Incremental Static Regeneration
 
-Exemple d'application avec génération de site statique (SSG).
+Exemple d'application avec regénération statique incrémentale (ISR).
+
+La liste des films et le détail de chaque film expirent au bout de 30 secondes et sont alors regénérées.
 
 Stack technique :
 
 - Next.js
 - Typescript
 - Tailwind
-- 
+
 Installation :
 
 ```bash
@@ -25,8 +27,8 @@ Puis accès à `http://localhost:3000`
 Exécution en mode production :
 
 ```bash
-npm run export
-npx serve out
+npm run build
+npm start
 ```
 
 Puis accès à `http://localhost:3000`
