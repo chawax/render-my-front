@@ -76,26 +76,6 @@ const loadMovies = async (): Promise<Array<MovieResume>> => {
   }));
 };
 
-const addFavorite = (id: number) => {
-  const value = localStorage.getItem("favorites");
-  const favorites = value ? JSON.parse(value) : [];
-  const newFavorites = [...favorites, id];
-  localStorage.setItem("favorites", JSON.stringify(newFavorites));
-};
-
-const removeFavorite = (id: number) => {
-  const value = localStorage.getItem("favorites");
-  const favorites: number[] = value ? JSON.parse(value) : [];
-  const newFavorites = favorites.filter((element) => element !== id);
-  localStorage.setItem("favorites", JSON.stringify(newFavorites));
-};
-
-const isFavorite = (id: number) => {
-  const value = localStorage.getItem("favorites");
-  const favorites: number[] = value ? JSON.parse(value) : [];
-  return favorites.includes(id);
-};
-
 const loadFavorites = (): number[] => {
   const value = localStorage.getItem("favorites");
   const favorites: number[] = value ? JSON.parse(value) : [];
@@ -107,14 +87,9 @@ const saveFavorites = (favorites: number[]): void => {
 };
 
 export {
-  // Favorites management
-  addFavorite,
   loadFavorites,
-  saveFavorites,
-  isFavorite,
-  removeFavorite,
-
   // Movies loading
   loadMovie,
   loadMovies,
+  saveFavorites,
 };
