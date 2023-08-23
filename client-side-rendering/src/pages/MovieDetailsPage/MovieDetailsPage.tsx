@@ -1,6 +1,6 @@
 import { format, parse } from "date-fns";
 import { useLoaderData } from "react-router-dom";
-import { ActorCard } from "../../components";
+import { ActorCard, FavoriteButton } from "../../components";
 import { MovieLoaderdata } from "./loader";
 
 const popularityFormatter = new Intl.NumberFormat("fr-FR", {
@@ -29,6 +29,7 @@ export default function MovieDetailsPage() {
           />
 
           <div className="flex flex-col gap-4 sm:basis-3/4 sm:ml-4">
+            <FavoriteButton id={movie.id} />
             <p className="text-md">{movie.overview}</p>
             {movie.genres ? (
               <ul className="list-none">
