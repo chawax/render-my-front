@@ -1,5 +1,5 @@
 import { MovieCard } from "@/components";
-import { loadMovies } from "@/services";
+import { loadMovies } from "@/services/movies";
 import { MovieResume } from "@/types";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
