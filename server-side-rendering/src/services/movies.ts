@@ -1,4 +1,4 @@
-import { MovieDetails, MovieResume } from "./types";
+import { MovieDetails, MovieResume } from "@/types";
 
 const getHeaders = (): HeadersInit => {
   const key = process.env.API_KEY;
@@ -76,20 +76,4 @@ const loadMovies = async (): Promise<Array<MovieResume>> => {
   }));
 };
 
-const loadFavorites = (): number[] => {
-  const value = localStorage.getItem("favorites");
-  const favorites: number[] = value ? JSON.parse(value) : [];
-  return favorites;
-};
-
-const saveFavorites = (favorites: number[]): void => {
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-};
-
-export {
-  loadFavorites,
-  // Movies loading
-  loadMovie,
-  loadMovies,
-  saveFavorites,
-};
+export { loadMovie, loadMovies };
