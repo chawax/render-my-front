@@ -7,8 +7,7 @@ Stack technique :
 - Next.js
 - Typescript
 - Tailwind
-- 
-Installation :
+- Installation :
 
 ```bash
 npm install
@@ -26,7 +25,7 @@ Exécution en mode production :
 
 ```bash
 npm run export
-npx serve out
+npm run preview
 ```
 
-Puis accès à `http://localhost:3000`
+Puis accès à `http://localhost:4400`

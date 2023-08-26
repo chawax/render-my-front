@@ -31,4 +31,4 @@ npm run build
 npm run preview
 ```
 
-Puis accès à `http://localhost:4173`
+Puis accès à `http://localhost:4200`
