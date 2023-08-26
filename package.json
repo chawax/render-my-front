@@ -1,6 +1,6 @@
 {
+  "name": "render-my-front",
   "repository": "https://github.com/chawax/render-my-front",
-  "license": "MIT",
   "private": false,
   "workspaces": [
     "apps/*",
