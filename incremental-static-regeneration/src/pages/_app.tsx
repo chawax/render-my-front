@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Link href="/">
           <h1 className="text-3xl text-white font-bold">My Movies</h1>
         </Link>
+        <span className="text-white">Incremental Static Regeneration</span>
       </header>
       <main className="p-4">
         <Component {...pageProps} />

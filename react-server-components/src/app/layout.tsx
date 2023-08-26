@@ -18,6 +18,7 @@ export default function RootLayout({
           <Link href="/">
             <h1 className="text-3xl text-white font-bold">My Movies</h1>
           </Link>
+          <span className="text-white">React Server Components</span>
         </header>
         <main className="p-4">{children}</main>
       </body>
