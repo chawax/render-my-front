@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>My Movies - Static Site Generation</title>
+        <title>My Movies - Incremental Static Regeneration</title>
       </Head>
       <header className="bg-black p-4 sticky top-0">
         <Link href="/">
