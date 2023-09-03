@@ -5,8 +5,9 @@ import Layout from "../../layouts/Layout.astro";
 import { loadMovie, loadMovies } from "../../services";
 import { FavoriteButton } from "../../components";
 
-const popularityFormatter = new Intl.NumberFormat("fr-FR", {
+const voteFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
+  maximumFractionDigits: 1,
 });
 
 export async function getStaticPaths() {
@@ -26,7 +27,7 @@ const formattedReleaseDate = format(
   parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
   "dd/MM/yyyy"
 );
-const formattedPopularity = popularityFormatter.format(movie.popularity);
+const formattedVote = voteFormatter.format(movie.voteAverage);
 ---
 
 <Layout title="My Movies - Islands Architecture">
@@ -60,8 +61,8 @@ const formattedPopularity = popularityFormatter.format(movie.popularity);
           Sortie le <span class="font-bold">{formattedReleaseDate}</span>
         </p>
         <p class="text-sm">
-          Popularité :{" "}
-          <span class="font-bold">{formattedPopularity}</span>
+          Note :{" "}
+          <span class="font-bold">{formattedVote}</span>
         </p>
         {
           movie.actors ? (

@@ -3,7 +3,7 @@ export type MovieResume = {
   title: string;
   overview: string;
   releaseDate: string;
-  popularity: number;
+  voteAverage: number;
   posterPath: string;
 };
 

@@ -3,8 +3,9 @@ import { useLoaderData } from "react-router-dom";
 import { ActorCard, FavoriteButton } from "../../components";
 import { MovieLoaderdata } from "./loader";
 
-const popularityFormatter = new Intl.NumberFormat("fr-FR", {
+const voteFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
+  maximumFractionDigits: 1,
 });
 
 export default function MovieDetailsPage() {
@@ -15,7 +16,7 @@ export default function MovieDetailsPage() {
       parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
       "dd/MM/yyyy"
     );
-    const formattedPopularity = popularityFormatter.format(movie.popularity);
+    const formattedVote = voteFormatter.format(movie.voteAverage);
     return (
       <article className="flex flex-col gap-4">
         <h2 className="text-3xl font-bold">{movie.title}</h2>
@@ -48,8 +49,8 @@ export default function MovieDetailsPage() {
               <span className="font-bold">{formattedReleaseDate}</span>
             </p>
             <p className="text-sm">
-              Popularité :{" "}
-              <span className="font-bold">{formattedPopularity}</span>
+              Note :{" "}
+              <span className="font-bold">{formattedVote}</span>
             </p>
             {movie.actors ? (
               <section>
