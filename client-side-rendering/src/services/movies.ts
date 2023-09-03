@@ -44,7 +44,7 @@ const loadMovie = async (id: number): Promise<MovieDetails> => {
     title: details.title,
     overview: details.overview,
     releaseDate: details.release_date,
-    popularity: details.popularity,
+    voteAverage: details.vote_average,
     posterPath: details.poster_path,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     genres: details.genres.map((genre: any) => genre.name),
@@ -82,6 +82,7 @@ const loadMovies = async (): Promise<Array<MovieResume>> => {
     overview: result.overview,
     releaseDate: result.release_date,
     popularity: result.popularity,
+    voteAverage: result.vote_average,
     posterPath: result.poster_path,
   }));
 };

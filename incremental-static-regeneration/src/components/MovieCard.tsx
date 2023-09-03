@@ -6,8 +6,9 @@ type MovieCardProps = {
   movie: MovieResume;
 };
 
-const popularityFormatter = new Intl.NumberFormat("fr-FR", {
+const voteFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
+  maximumFractionDigits: 1,
 });
 
 const MovieCard = ({ movie }: MovieCardProps) => {
@@ -16,7 +17,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
     "dd/MM/yyyy"
   );
-  const formattedPopularity = popularityFormatter.format(movie.popularity);
+  const formattedVote = voteFormatter.format(movie.voteAverage);
   return (
     <article className="p-4 rounded mb-4">
       <h2 className="text-xl truncate font-bold text-center mb-4">
@@ -33,9 +34,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       <p className="text-sm text-center mt-4">
         Sortie le {formattedReleaseDate}
       </p>
-      <div className="mt-4 text-center">
+      <div className="text-sm text-center mt-4">
+      Note :{" "}
         <span className="text-sm text-white text-center bg-stone-500 p-2 rounded-xl">
-          {formattedPopularity}
+          {formattedVote}
         </span>
       </div>
     </article>
