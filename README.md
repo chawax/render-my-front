@@ -12,4 +12,4 @@ L'application comprend :
 - Une page contenant une liste des films "tendances" du moment
 - Une page de détail de chaque film comprenant en particulier la liste des 10 acteurs et actrices les plus populaires du casting.
 
-Pour les données sur les films, on s'appuie sur l'API The Movie DataBase (TMDB)
+Pour les données sur les films, on s'appuie sur l'[API The Movie DataBase (TMDB)](https://www.themoviedb.org/).
