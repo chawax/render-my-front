@@ -11,7 +11,6 @@ const saveFavorites = (favorites: number[]): void => {
 };
 
 const useFavorite = (id: number) => {
-
   const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const useFavorite = (id: number) => {
     setFavorites(favorites);
   }, []);
 
-  const favorite = favorites.includes(id)
+  const favorite = favorites.includes(id);
 
   const handleRemoveFavorite = () => {
     const newFavorites = favorites.filter((element) => element !== id);
@@ -27,14 +26,13 @@ const useFavorite = (id: number) => {
     saveFavorites(newFavorites);
   };
 
-
-   const handleAddFavorite = () => {
-    if (! favorites.includes(id)){
+  const handleAddFavorite = () => {
+    if (!favorites.includes(id)) {
       const newFavorites = [...favorites, id];
       setFavorites(newFavorites);
       saveFavorites(newFavorites);
     }
-   };
+  };
 
   return {
     favorite,

@@ -16,7 +16,7 @@ export default function MoviePage({
   const imgUrl = `https://image.tmdb.org/t/p/w500${movie.posterPath}`;
   const formattedReleaseDate = format(
     parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
-    "dd/MM/yyyy"
+    "dd/MM/yyyy",
   );
   const formattedVote = voteFormatter.format(movie.voteAverage);
   return (
@@ -51,8 +51,7 @@ export default function MoviePage({
             Sortie le <span className="font-bold">{formattedReleaseDate}</span>
           </p>
           <p className="text-sm">
-            Note :{" "}
-            <span className="font-bold">{formattedVote}</span>
+            Note : <span className="font-bold">{formattedVote}</span>
           </p>
           {movie.actors ? (
             <section>
