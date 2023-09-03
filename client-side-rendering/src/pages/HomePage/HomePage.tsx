@@ -1,9 +1,7 @@
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
 function HomePage() {
-    return (
-        <Navigate to="/movies" replace={true} />
-    )
+  return <Navigate to="/movies" replace={true} />;
 }
 
-export default HomePage
+export default HomePage;

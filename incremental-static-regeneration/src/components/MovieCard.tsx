@@ -15,7 +15,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.posterPath}`;
   const formattedReleaseDate = format(
     parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
-    "dd/MM/yyyy"
+    "dd/MM/yyyy",
   );
   const formattedVote = voteFormatter.format(movie.voteAverage);
   return (
@@ -35,7 +35,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         Sortie le {formattedReleaseDate}
       </p>
       <div className="text-sm text-center mt-4">
-      Note :{" "}
+        Note :{" "}
         <span className="text-sm text-white text-center bg-stone-500 p-2 rounded-xl">
           {formattedVote}
         </span>
