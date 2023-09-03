@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>My Movies - Static Site Generation</title>
       </Head>
       <header className="bg-black p-4 sticky top-0">
-        <Link href="/">
+        <Link href="/movies">
           <h1 className="text-3xl text-white font-bold">My Movies</h1>
         </Link>
         <span className="text-white">Static Site Generation</span>
