@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 4800",
+    "start": "next start -p 4700",
     "lint": "next lint"
   },
   "dependencies": {
