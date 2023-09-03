@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./pages/ErrorPage";
+import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
 import { MovieDetailsPage, movieLoader } from "./pages/MovieDetailsPage";
 import { MoviesListPage, moviesLoader } from "./pages/MoviesListPage";
@@ -11,8 +12,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        element: <MoviesListPage />,
-        loader: moviesLoader,
+        element: <HomePage />,
         index: true,
       },
       {

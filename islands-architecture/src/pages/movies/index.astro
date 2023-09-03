@@ -1,7 +1,7 @@
 ---
-import MovieCard from "../components/MovieCard.astro";
-import Layout from "../layouts/Layout.astro";
-import { fetchMovies } from "../services";
+import MovieCard from "../../components/MovieCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { fetchMovies } from "../../services";
 
 const movies = await fetchMovies();
 ---

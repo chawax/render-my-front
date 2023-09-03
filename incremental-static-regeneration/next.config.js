@@ -5,6 +5,13 @@ const nextConfig = {
     domains: ["image.tmdb.org"],
     unoptimized: true,
   },
+  redirects: async () => [
+    {
+      source: "/",
+      destination: "/movies",
+      permanent: false,
+    },
+  ],
 };
 
 module.exports = nextConfig;
