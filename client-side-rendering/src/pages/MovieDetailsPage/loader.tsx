@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from "react-router-dom";
-import { loadMovie } from "../../services";
+import { fetchOneMovie } from "../../services";
 import { MovieDetails } from "../../types";
 
 export interface MovieLoaderdata {
@@ -13,6 +13,6 @@ export default async function movieLoader({
     throw new Error("Expected params.id");
   }
   const movieId = params.id;
-  const movie = await loadMovie(Number(movieId));
+  const movie = await fetchOneMovie(Number(movieId));
   return { movie };
 }

@@ -1,9 +1,9 @@
 import { MovieCard } from "@/components";
-import { loadMovies } from "@/services";
+import { fetchMovies } from "@/services";
 import Link from "next/link";
 
 export default async function Home() {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
 
   return movies.length > 0 ? (
     <section className="flex flex-row flex-wrap justify-between">

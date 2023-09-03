@@ -1,5 +1,5 @@
 import { MovieCard } from "@/components";
-import { loadMovies } from "@/services";
+import { fetchMovies } from "@/services";
 import { MovieResume } from "@/types";
 import { GetStaticProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
@@ -29,6 +29,6 @@ export default function MoviesPage({
 export const getStaticProps: GetStaticProps<{
   movies: Array<MovieResume>;
 }> = async () => {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
   return { props: { movies } };
 };

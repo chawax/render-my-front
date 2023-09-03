@@ -2,7 +2,7 @@
 import { format, parse } from "date-fns";
 import ActorCard from "../../components/ActorCard.astro";
 import Layout from "../../layouts/Layout.astro";
-import { loadMovie, loadMovies } from "../../services";
+import { fetchOneMovie, fetchMovies } from "../../services";
 import { FavoriteButton } from "../../components";
 
 const voteFormatter = new Intl.NumberFormat("fr-FR", {
@@ -11,7 +11,7 @@ const voteFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 export async function getStaticPaths() {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
   return movies.map((movie) => ({
     params: {
       id: movie.id,
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const movie = await loadMovie(id);
+const movie = await fetchOneMovie(id);
 
 const imgUrl = `https://image.tmdb.org/t/p/w500${movie.posterPath}`;
 const formattedReleaseDate = format(

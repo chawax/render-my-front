@@ -1,5 +1,5 @@
 import { ActorCard, FavoriteButton } from "@/components";
-import { loadMovie, loadMovies } from "@/services";
+import { fetchOneMovie, fetchMovies } from "@/services";
 import { MovieDetails } from "@/types";
 import { format, parse } from "date-fns";
 import {
@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async ({ params }) => {
   if (params && params.id) {
     // @ts-ignore
-    const movie = await loadMovie(params.id);
+    const movie = await fetchOneMovie(params.id);
     return { props: { movie: movie! } };
   } else {
     throw new Error("Missing id parameter");
@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps<{
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
   return {
     paths: movies.map((movie) => `/movies/${movie.id}`),
     fallback: false,

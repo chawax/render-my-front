@@ -1,9 +1,9 @@
 ---
 import MovieCard from "../components/MovieCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { loadMovies } from "../services";
+import { fetchMovies } from "../services";
 
-const movies = await loadMovies();
+const movies = await fetchMovies();
 ---
 
 <Layout title="My Movies - Islands Architecture">
