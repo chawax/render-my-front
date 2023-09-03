@@ -1,23 +1,40 @@
 import { useEffect, useState } from "react";
-import useFavorites from "./useFavorites";
+
+const loadFavorites = (): number[] => {
+  const value = localStorage.getItem("favorites");
+  const favorites: number[] = value ? JSON.parse(value) : [];
+  return favorites;
+};
+
+const saveFavorites = (favorites: number[]): void => {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+};
 
 const useFavorite = (id: number) => {
-  const { favorites, isFavorite, addFavorite, removeFavorite } = useFavorites();
-  const [favorite, setFavorite] = useState(false);
+
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
-    setFavorite(isFavorite(id));
-  }, [favorites, id, setFavorite, isFavorite]);
+    const favorites = loadFavorites();
+    setFavorites(favorites);
+  }, []);
 
-  const handleAddFavorite = () => {
-    setFavorite(true);
-    addFavorite(id);
-  };
+  const favorite = favorites.includes(id)
 
   const handleRemoveFavorite = () => {
-    setFavorite(false);
-    removeFavorite(id);
+    const newFavorites = favorites.filter((element) => element !== id);
+    setFavorites(newFavorites);
+    saveFavorites(newFavorites);
   };
+
+
+   const handleAddFavorite = () => {
+    if (! favorites.includes(id)){
+      const newFavorites = [...favorites, id];
+      setFavorites(newFavorites);
+      saveFavorites(newFavorites);
+    }
+   };
 
   return {
     favorite,
