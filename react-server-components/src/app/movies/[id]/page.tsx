@@ -1,5 +1,5 @@
 import { ActorCard, FavoriteButton } from "@/components";
-import { loadMovie, loadMovies } from "@/services";
+import { fetchOneMovie, fetchMovies } from "@/services";
 import { format, parse } from "date-fns";
 import Image from "next/image";
 
@@ -17,7 +17,7 @@ export default async function MoviePage({
 }: {
   params: MoviePageParams;
 }) {
-  const movie = await loadMovie(Number(params.id));
+  const movie = await fetchOneMovie(Number(params.id));
 
   const imgUrl = `https://image.tmdb.org/t/p/w500${movie.posterPath}`;
   const formattedReleaseDate = format(
@@ -83,6 +83,6 @@ export default async function MoviePage({
 }
 
 export async function generateStaticParams(): Promise<MoviePageParams[]> {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
   return movies.map((movie) => ({ id: String(movie.id) }));
 }

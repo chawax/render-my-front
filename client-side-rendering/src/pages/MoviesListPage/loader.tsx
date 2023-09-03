@@ -1,4 +1,4 @@
-import { loadMovies } from "../../services";
+import { fetchMovies } from "../../services";
 import { MovieResume } from "../../types";
 
 export interface MoviesLoaderdata {
@@ -6,6 +6,6 @@ export interface MoviesLoaderdata {
 }
 
 export default async function moviesLoader(): Promise<MoviesLoaderdata> {
-  const movies = await loadMovies();
+  const movies = await fetchMovies();
   return { movies };
 }

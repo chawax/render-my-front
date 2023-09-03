@@ -11,7 +11,7 @@ const getHeaders = (): HeadersInit => {
   };
 };
 
-const loadMovie = async (id: number): Promise<MovieDetails> => {
+const fetchOneMovie = async (id: number): Promise<MovieDetails> => {
   // We load queries to get details and credits
 
   const detailsUrl = `${
@@ -22,6 +22,8 @@ const loadMovie = async (id: number): Promise<MovieDetails> => {
     import.meta.env.VITE_API_URL
   }/movie/${id}/credits?language=fr-FR`;
 
+  console.log(`Fetching ${detailsUrl} ...`);
+  console.log(`Fetching ${creditsUrl} ...`);
   const promises = [
     fetch(detailsUrl, {
       headers: getHeaders(),
@@ -63,10 +65,11 @@ const loadMovie = async (id: number): Promise<MovieDetails> => {
   };
 };
 
-const loadMovies = async (): Promise<Array<MovieResume>> => {
+const fetchMovies = async (): Promise<Array<MovieResume>> => {
   const url = `${
     import.meta.env.VITE_API_URL
   }/trending/movie/week?language=fr-FR`;
+  console.log(`Fetching ${url} ...`);
   const response = await fetch(url, {
     headers: getHeaders(),
   });
@@ -87,4 +90,4 @@ const loadMovies = async (): Promise<Array<MovieResume>> => {
   }));
 };
 
-export { loadMovie, loadMovies };
+export { fetchOneMovie, fetchMovies };

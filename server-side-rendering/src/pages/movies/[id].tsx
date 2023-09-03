@@ -1,5 +1,5 @@
 import { ActorCard, FavoriteButton } from "@/components";
-import { loadMovie } from "@/services";
+import { fetchOneMovie } from "@/services";
 import { MovieDetails } from "@/types";
 import { format, parse } from "date-fns";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -81,7 +81,7 @@ export const getServerSideProps: GetServerSideProps<{
 }> = async ({ params }) => {
   if (params && params.id) {
     // @ts-ignore
-    const movie = await loadMovie(params.id);
+    const movie = await fetchOneMovie(params.id);
     return { props: { movie: movie! } };
   } else {
     throw new Error("Missing id parameter");
