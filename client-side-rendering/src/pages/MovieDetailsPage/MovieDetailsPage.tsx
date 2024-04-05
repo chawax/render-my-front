@@ -1,7 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import { format, parse } from "date-fns";
-import { useLoaderData } from "react-router-dom";
-import { ActorCard, FavoriteButton } from "../../components";
-import { MovieLoaderdata } from "./loader";
+import { useParams } from "react-router-dom";
+import { ActorCard, FavoriteButton, Loader } from "../../components";
+import { fetchOneMovie } from "../../services";
 
 const voteFormatter = new Intl.NumberFormat("fr-FR", {
   style: "decimal",
@@ -9,8 +10,40 @@ const voteFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 export default function MovieDetailsPage() {
-  const { movie } = useLoaderData() as MovieLoaderdata;
-  if (movie) {
+  // Use Tanstack Query to retrieve and cache the movie details
+
+  const { id } = useParams();
+  const {
+    data: movie,
+    error,
+    isError,
+    isFetching,
+    isSuccess,
+  } = useQuery({
+    queryKey: ["movies", id],
+    // @ts-expect-error We always have an id
+    queryFn: () => fetchOneMovie(id!),
+  });
+
+  // Displays a loader while fetching
+
+  if (isFetching) {
+    return <Loader />;
+  }
+
+  // Displays the error message if fetching failed
+
+  if (isError) {
+    return (
+      <p className="text-red-400">
+        Impossible de charger les données : {error.message}
+      </p>
+    );
+  }
+
+  // Displays the details of movie if fetching was successful
+
+  if (isSuccess) {
     const imgUrl = `https://image.tmdb.org/t/p/w500${movie.posterPath}`;
     const formattedReleaseDate = format(
       parse(movie.releaseDate, "yyyy-MM-dd", new Date()),
@@ -71,7 +104,5 @@ export default function MovieDetailsPage() {
         </div>
       </article>
     );
-  } else {
-    return <p>Film introuvable !</p>;
   }
 }
